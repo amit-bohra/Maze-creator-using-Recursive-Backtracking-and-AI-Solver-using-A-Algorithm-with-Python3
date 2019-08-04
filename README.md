@@ -4,14 +4,7 @@ With Dynamic Starting and Ending Node. And Dynamic Path Between any two given no
 
 This is Maze Creator and Maze Solver AI which uses recursive Backtracking for Creation and A* Algorithm for Solving From Any Starting point to Any Ending Point
 To run this Program You will Require:
-Python 3
-
-import pygame,time
-from pygame.locals import *
-import random as rd
-import numpy as np
-from copy import deepcopy as dp
-import math
+Python 3, pygame, time, random, numpy, deepcopy, math
 
 
 
