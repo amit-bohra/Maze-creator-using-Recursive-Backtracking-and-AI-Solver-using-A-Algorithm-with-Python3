@@ -12,7 +12,9 @@ stacky=[[0,0]]
 path=[]
 pathcell=[]
 pathdict={}
-tnode=3#input("total nodes")
+tnode=1#input("total nodes")
+if tnode<2:
+    tnode=2
 for i in range(1,(tnode*tnode)+1):
     pathdict[i]=[]
 county=0
