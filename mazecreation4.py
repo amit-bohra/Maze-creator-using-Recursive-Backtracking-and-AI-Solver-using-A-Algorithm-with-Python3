@@ -148,7 +148,7 @@ time.sleep(2)
 lining=[]
 
 time2=time.time()
-print((time2-time1)/60+" mins")
+print(str((time2-time1)/60)+" minutes")
 pygame.init()
 screen=pygame.display.set_mode((window,window))
 pygame.display.set_caption('MAZE PROGRAM')
