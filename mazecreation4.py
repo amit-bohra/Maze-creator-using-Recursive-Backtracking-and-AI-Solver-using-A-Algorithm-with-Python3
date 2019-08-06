@@ -5,13 +5,14 @@ import numpy as np
 from copy import deepcopy as dp
 import math
 
+time1=time.time()
 goal=1
 shuru=1
 stacky=[[0,0]]
 path=[]
 pathcell=[]
 pathdict={}
-tnode=5#input("total nodes")
+tnode=100#input("total nodes")
 for i in range(1,(tnode*tnode)+1):
     pathdict[i]=[]
 county=0
@@ -75,7 +76,7 @@ stack=[1]
 i=1
 covered=[1]
 flag=0
-listy=[True, True] # zigzag path more false more zigzag
+listy=[True, False] # zigzag path more false more zigzag
 trying=True #random starting node
 if trying==True:
     q=rd.choice(range(2,tnode+1))
@@ -145,6 +146,9 @@ import time
 time.sleep(2)
 #print(pathdict)
 lining=[]
+
+time2=time.time()
+print((time2-time1)/60+" mins")
 pygame.init()
 screen=pygame.display.set_mode((window,window))
 pygame.display.set_caption('MAZE PROGRAM')
@@ -263,6 +267,7 @@ u1=0
 l1=0
 flagging=0
 purple=(128,0,128)
+tflag=1
 while(running):
     if len(pathogen)!=0:
         counting+=1
@@ -295,8 +300,10 @@ while(running):
         timer=30
     if tnode in range(51,71):
         timer=35
-    if tnode>=71:
+    if tnode in range(71,80):
         timer=50
+    if tnode>=80:
+        timer=tnode
     clock.tick(timer)
     screen.fill(black)
     rectangle=pygame.draw.rect(screen,white,(start+startl,start+startl,w1,w1))
@@ -347,16 +354,18 @@ while(running):
             d=c+start
             if mousex in range(a,b+1) and mousey in range(c,d+1):
                 grect=pygame.draw.rect(screen,gray,(a,c,b-a,d-c))
-                for event in pygame.event.get():
-                    if event.type==pygame.MOUSEBUTTONDOWN:
-                        flag=0
-                        flagging=0
-                        a1=a
-                        b1=start
-                        c1=c
-                        d1=start
-                        goal=cell
-                        #print(goal)
+                if tflag==1:
+                    for event in pygame.event.get():
+                        if event.type==pygame.MOUSEBUTTONDOWN:
+                            tflag=0
+                            flag=0
+                            flagging=0
+                            a1=a
+                            b1=start
+                            c1=c
+                            d1=start
+                            goal=cell
+                            #print(goal)
         counti+=tnode
             #print('i',i,'j',j)
             #print('counti',counti,'countj',countj)
@@ -368,6 +377,7 @@ while(running):
     if len(pathing)!=0 and flagging==1:
         thickness=start//5
         pygame.draw.lines(screen,black,False,pathing,thickness)
+        tflag=1
     if flag==1:
         pygame.draw.rect(screen,purple,(l1,u1,start,start))
     goalrect=pygame.draw.rect(screen,blue,(a1,c1,b1,d1))
