@@ -12,7 +12,7 @@ stacky=[[0,0]]
 path=[]
 pathcell=[]
 pathdict={}
-tnode=1#input("total nodes")
+tnode=100#input("total nodes")
 if tnode<2:
     tnode=2
 for i in range(1,(tnode*tnode)+1):
