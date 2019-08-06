@@ -12,7 +12,7 @@ stacky=[[0,0]]
 path=[]
 pathcell=[]
 pathdict={}
-tnode=100#input("total nodes")
+tnode=3#input("total nodes")
 for i in range(1,(tnode*tnode)+1):
     pathdict[i]=[]
 county=0
@@ -276,6 +276,8 @@ while(running):
             flag=1
             #print(turu,shuru)
             u1,de1,l1,re1=lines[turu]
+        if len(pathogen)==1:
+            counting=0
         up,down,left,right=lines[pathogen[counting]]
         if y>up:
             y-=start+startl
@@ -357,15 +359,18 @@ while(running):
                 if tflag==1:
                     for event in pygame.event.get():
                         if event.type==pygame.MOUSEBUTTONDOWN:
-                            tflag=0
-                            flag=0
-                            flagging=0
-                            a1=a
-                            b1=start
-                            c1=c
-                            d1=start
-                            goal=cell
-                            #print(goal)
+                            if cell==shuru:
+                                continue
+                            else:
+                                tflag=0
+                                flag=0
+                                flagging=0
+                                a1=a
+                                b1=start
+                                c1=c
+                                d1=start
+                                goal=cell
+                                #print(goal)
         counti+=tnode
             #print('i',i,'j',j)
             #print('counti',counti,'countj',countj)
@@ -376,7 +381,12 @@ while(running):
         pathing,pathogen,length=pathfinder()
     if len(pathing)!=0 and flagging==1:
         thickness=start//5
-        pygame.draw.lines(screen,black,False,pathing,thickness)
+        try:
+            pygame.draw.lines(screen,black,False,pathing,thickness)
+        except ValueError:
+            pygame.draw.line(screen,black,tuple(center[turu]),pathing[0],thickness)
+            u1,de1,l1,re1=lines[turu]
+            flag=1
         tflag=1
     if flag==1:
         pygame.draw.rect(screen,purple,(l1,u1,start,start))
