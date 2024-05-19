@@ -8,5 +8,4 @@ This is Maze Creator and Maze Solver AI which uses recursive Backtracking for Cr
 To run this Program You will Require:
 Python 3, pygame, time, random, numpy, deepcopy, math
 
-
-
+<img src="Screenshot 2024-05-19 at 8.12.32 PM.png"/>
